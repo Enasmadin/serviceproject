@@ -39,7 +39,7 @@ Route::name('admin.')->prefix('admin')->middleware('is_admin')->group(function (
     Route::resource('/orders', AdminOrderController::class);
     Route::resource('/services', AdminServiceController::class,);
    
-    // Route::resource('/admin', AdminController::class);
+
 });
 Route::prefix('admin')->middleware('is_admin')->group(function () {
     
@@ -56,4 +56,4 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware('is_admin');
 Route::resource('/admins', AdminController::class);
-// Route::resource('/users', UserController::class);
+

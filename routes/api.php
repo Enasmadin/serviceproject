@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\OrderController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +22,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::name('api.')->group(function () {
+
+    
+    Route::apiresource("/orders", OrderController::class);
+    Route::post("/register", [RegisterController::class, 'store']);
+    Route::post("/login", [RegisterController::class, 'login']);
+    Route::post("/logout", [RegisterController::class, 'logout']);
+    Route::apiresource('/users', UserController::class);
+ 
+});
+
